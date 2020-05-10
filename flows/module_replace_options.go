@@ -50,15 +50,5 @@ func ModuleReplaceOptions(previousMenuItem models.MenuItem) (models.MenuItem, er
 		return models.MenuItem{}, err
 	}
 
-	modFile, err := models.GetModFile()
-	if err != nil {
-		return models.MenuItem{}, errors.Wrap(err, "Can't load mod file")
-	}
-	for _, config := range modFile.Replace {
-		if config == nil {
-			continue
-		}
-	}
-
 	return menuItems[i], nil
 }
