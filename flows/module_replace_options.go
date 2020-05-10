@@ -49,6 +49,5 @@ func ModuleReplaceOptions(previousMenuItem models.MenuItem) (models.MenuItem, er
 	if err != nil {
 		return models.MenuItem{}, err
 	}
-
 	return menuItems[i], nil
 }
