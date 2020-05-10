@@ -24,7 +24,7 @@ func ModuleReplaceOptions(previousMenuItem models.MenuItem) (models.MenuItem, er
 		},
 	}
 
-	config, err := models.ParseConfigurationsFromFile(".gomoduleui.yml")
+	config, err := models.ParseConfigurationsFromFile(models.ConfigPath)
 	if err != nil {
 		return models.MenuItem{}, errors.Wrap(err, "Can't load configuration")
 	}
@@ -48,6 +48,16 @@ func ModuleReplaceOptions(previousMenuItem models.MenuItem) (models.MenuItem, er
 	i, _, err := prompt.Run()
 	if err != nil {
 		return models.MenuItem{}, err
+	}
+
+	modFile, err := models.GetModFile()
+	if err != nil {
+		return models.MenuItem{}, errors.Wrap(err, "Can't load mod file")
+	}
+	for _, config := range modFile.Replace {
+		if config == nil {
+			continue
+		}
 	}
 
 	return menuItems[i], nil
