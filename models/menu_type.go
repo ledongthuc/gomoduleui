@@ -3,6 +3,11 @@ package models
 type MenuType int
 
 const (
-	MenuTypeModule MenuType = iota
-	MenuTypeCustom MenuType = iota
+	MenuTypeStart                MenuType = iota
+	MenuTypeExit                 MenuType = iota
+	MenuTypeModule               MenuType = iota
+	MenuTypeModuleReplaceOptions MenuType = iota
+	MenuTypeModuleReplaceAction  MenuType = iota
+	MenuTypeModuleUpdateOptions  MenuType = iota
+	MenuTypeCustom               MenuType = iota
 )

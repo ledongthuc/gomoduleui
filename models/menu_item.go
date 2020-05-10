@@ -14,6 +14,11 @@ const (
   Indirect: %t`
 )
 
+const (
+	MenuItemLabelExit  = "exit"
+	MenuItemLabelStart = "start"
+)
+
 type MenuItem struct {
 	Label        string
 	Description  string
@@ -58,8 +63,23 @@ func CreateMenuItemFromRequire(require modfile.Require, replaced bool) MenuItem 
 	description = fmt.Sprintf(MenuItemDescription, path, version, replaced, indirect)
 
 	return MenuItem{
-		Label:       label,
-		Description: description,
-		Type:        MenuTypeModule,
+		Label:        label,
+		Description:  description,
+		Type:         MenuTypeModule,
+		OriginalData: require,
+	}
+}
+
+func GetStartMenuItem() MenuItem {
+	return MenuItem{
+		Label: MenuItemLabelStart,
+		Type:  MenuTypeStart,
+	}
+}
+
+func GetExitMenuItem() MenuItem {
+	return MenuItem{
+		Label: MenuItemLabelExit,
+		Type:  MenuTypeExit,
 	}
 }

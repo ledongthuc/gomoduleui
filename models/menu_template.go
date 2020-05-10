@@ -8,9 +8,9 @@ func GetDefaultMenuTemplate() *promptui.SelectTemplates {
 		Active:   "{{ .Label | green }}",
 		Inactive: "{{ .Label }}",
 		Selected: "{{ .Label }}",
-		Details: `
+		Details: `{{if .Description}}
 --------- Detail ----------
 
-{{.Description}}`,
+{{.Description}}{{end}}`,
 	}
 }
